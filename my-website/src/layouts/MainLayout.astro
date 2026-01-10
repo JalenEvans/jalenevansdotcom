@@ -1,5 +1,8 @@
 ---
-const { title = "My Portfolio" } = Astro.props;
+import '../styles/global.css';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+const { title = "Jalen Evans" } = Astro.props;
 ---
 
 <html lang="en">
@@ -9,16 +12,11 @@ const { title = "My Portfolio" } = Astro.props;
     <title>{title}</title>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
-    </nav>
-
+    <NavBar />
     <main>
         <slot />
     </main>
     
-    <footer>© 2026 My Astro Site</footer>
+    <Footer />
 </body>
 </html>
