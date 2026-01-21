@@ -55,3 +55,7 @@
     font-family: var(--font-body);
   }
 }
+
+.link {
+  @apply underline text-muted hover:text-font;
+}

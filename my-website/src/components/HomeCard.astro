@@ -1,12 +1,16 @@
 ---
 interface Props {
     title: string,
-    content: string
+    content: string,
+    link: string,
 }
 
-const { title, content } = Astro.props;
+const { title, content, link } = Astro.props;
 ---
-<div class="p-8 bg-light text-font">
-    <h3>{title}</h3>
-    <p class="text-muted">{content}</p>
+<div class="flex flex-col gap-3 p-8 h-50 bg-light text-font">
+    <h2 class="text-2xl">{title}</h2>
+    <div class="flex-col gap-2">
+        <p class="text-font">{content}</p>
+        <a class="link" href={link}>See more...</a>
+    </div>
 </div>
