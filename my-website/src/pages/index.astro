@@ -1,8 +1,12 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import Hero from '../components/Hero.astro';
+import HomeCard from '../components/HomeCard.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout>
-    <h1>Welcome to my Website!</h1>
-    <p>This is being injected into the slot element.</p>
+    <Hero />
+    <div class="flex flex-col gap-5 ml-8 mr-8 mb-4">
+        <HomeCard title='Hello' content='This is a Home Card'/>
+    </div>
 </MainLayout>
