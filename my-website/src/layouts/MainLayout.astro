@@ -22,8 +22,6 @@ const { title = "Jalen Evans" } = Astro.props;
             } else {
                 document.documentElement.classList.remove('dark');
             }
-            
-            console.log('Theme initialized to:', theme);
         })();
     </script>
 </head>
@@ -32,7 +30,6 @@ const { title = "Jalen Evans" } = Astro.props;
     <main>
         <slot />
     </main>
-    
     <Footer />
 </body>
 </html>

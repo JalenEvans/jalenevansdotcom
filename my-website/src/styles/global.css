@@ -52,10 +52,18 @@
 
   body {
     background-color: var(--color-dark);
+    color: var(--color-font);
     font-family: var(--font-body);
   }
 }
 
 .link {
   @apply underline text-muted hover:text-font;
+}
+
+@utility enlarge-* {
+  transition: transform 0.15s ease-in-out;
+  &:hover {
+    transform: scale(calc(--value(integer) / 100));
+  }
 }
