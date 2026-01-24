@@ -25,9 +25,9 @@ const { title = "Jalen Evans" } = Astro.props;
         })();
     </script>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     <NavBar />
-    <main>
+    <main class="flex-1">
         <slot />
     </main>
     <Footer />

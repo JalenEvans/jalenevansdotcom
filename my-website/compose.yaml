@@ -1,0 +1,12 @@
+name: jalenevansdotcom
+
+services:
+  jalenevansdotcom:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jalenevans/jalenevansdotcom:latest
+    container_name: jalenevansdotcom
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
