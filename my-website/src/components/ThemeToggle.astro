@@ -1,7 +1,15 @@
 ---
+import Sun from "../assets/sun.svg?raw";
+import Moon from "../assets/moon.svg?raw";
 ---
-<button id="theme-toggle">
-Toggle {/* Replace with sun and moon svg */}
+<button id="theme-toggle" class="flex flex-row items-center gap-2 p-2 border-2 rounded-xl enlarge-110">
+  <h3>Change Theme</h3>
+  <span class="block w-6 h-6 dark:hidden">
+    <Fragment set:html={Sun} />
+  </span>
+  <span class="hidden w-6 h-6 dark:block">
+    <Fragment set:html={Moon} />
+  </span>
 </button>
 
 <script>
@@ -15,3 +23,10 @@ Toggle {/* Replace with sun and moon svg */}
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 </script>
+
+<style>
+  #theme-toggle :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+</style>
