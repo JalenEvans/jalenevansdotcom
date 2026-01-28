@@ -1,35 +1,38 @@
 ---
-import '../styles/global.css';
-import NavBar from '../components/NavBar.astro';
-import Footer from '../components/Footer.astro';
-const { title = "Jalen Evans" } = Astro.props;
+import '../styles/global.css'
+import NavBar from '../components/NavBar.astro'
+import Footer from '../components/Footer.astro'
+const { title = 'Jalen Evans' } = Astro.props
 ---
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" sizes="180x180" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="180x180" href="/favicon.svg" />
     <script is:inline>
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            const theme = savedTheme || systemTheme;
+      ;(function () {
+        const savedTheme = localStorage.getItem('theme')
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
+          ? 'dark'
+          : 'light'
+        const theme = savedTheme || systemTheme
 
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        })();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      })()
     </script>
-</head>
-<body class="flex flex-col min-h-screen">
+  </head>
+  <body class="flex flex-col min-h-screen">
     <NavBar />
     <main class="flex-1">
-        <slot />
+      <slot />
     </main>
     <Footer />
-</body>
+  </body>
 </html>

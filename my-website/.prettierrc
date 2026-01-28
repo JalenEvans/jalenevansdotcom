@@ -1,0 +1,15 @@
+plugins:
+  - prettier-plugin-astro
+overrides:
+  - files: '*.astro'
+    options:
+      parser: 'astro'
+
+arrowParens: 'always'
+bracketSpacing: true
+objectWrap: 'preserve'
+printWidth: 80
+semi: false
+singleQuote: true
+tabWidth: 2
+trailingComma: 'all'

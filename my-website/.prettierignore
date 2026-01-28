@@ -1,0 +1,26 @@
+# Dependency Directories
+node_modules/
+
+# Build Artifacts
+dist/
+.astro/
+
+# Package Manager Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Public Assets (Images, Favicons, etc.)
+public/
+
+# Environment and Logs
+.env
+.env.*
+*.log
+
+# Ignore Markdown if you want total control over your writing layout
+*.md
+*.mdx
+
+# Ignore Obsidian
+.obsidian/

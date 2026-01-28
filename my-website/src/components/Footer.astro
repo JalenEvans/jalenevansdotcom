@@ -1,18 +1,33 @@
 ---
-import SocialMediaIcon from "./SocialMediaIcon.astro";
-import LinkedInLogo from "../assets/LinkedIn_Logo.svg?raw";
-import GithubLogo from "../assets/GitHub_Invertocat_Black.svg?raw";
-import GmailLogo from "../assets/gmail.svg?raw";
-import ThemeToggle from "./ThemeToggle.astro";
+import SocialMediaIcon from './SocialMediaIcon.astro'
+import LinkedInLogo from '../assets/LinkedIn_Logo.svg?raw'
+import GithubLogo from '../assets/GitHub_Invertocat_Black.svg?raw'
+import GmailLogo from '../assets/gmail.svg?raw'
+import ThemeToggle from './ThemeToggle.astro'
 ---
-<div class="relative bottom-0 w-full flex flex-col items-center gap-8 p-4 h-45 bg-bg text-font">
-    <div class="flex flex-col items-center gap-2">
-        <footer class="">Contact Me</footer>
-        <div class="flex flex-row gap-3">
-            <SocialMediaIcon link="https://www.linkedin.com/in/je319" rawPath={LinkedInLogo} hoverColor="#0A66C2"/>
-            <SocialMediaIcon link="https://www.github.com/JalenEvans" rawPath={GithubLogo} hoverColor="#646262"/>
-            <SocialMediaIcon link="mailto:jalenemmanuelevans@gmail.com" rawPath={GmailLogo} hoverColor="#EA4335"/>
-        </div>
+
+<div
+  class="relative bottom-0 w-full flex flex-col items-center gap-8 p-4 h-45 bg-bg text-font"
+>
+  <div class="flex flex-col items-center gap-2">
+    <footer class="">Contact Me</footer>
+    <div class="flex flex-row gap-3">
+      <SocialMediaIcon
+        link="https://www.linkedin.com/in/je319"
+        rawPath={LinkedInLogo}
+        hoverColor="#0A66C2"
+      />
+      <SocialMediaIcon
+        link="https://www.github.com/JalenEvans"
+        rawPath={GithubLogo}
+        hoverColor="#646262"
+      />
+      <SocialMediaIcon
+        link="mailto:jalenemmanuelevans@gmail.com"
+        rawPath={GmailLogo}
+        hoverColor="#EA4335"
+      />
     </div>
-    <ThemeToggle />
+  </div>
+  <ThemeToggle />
 </div>
