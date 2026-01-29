@@ -24,7 +24,7 @@
   --font-body: 'Montserrat', sans-serif;
 }
 
-@layer theme {
+@layer base {
   :root,
   :host {
     @variant dark {
@@ -50,6 +50,10 @@
     font-family: var(--font-heading);
   }
 
+  ul {
+    @apply list-disc ml-4;
+  }
+
   body {
     background-color: var(--color-dark);
     color: var(--color-font);
@@ -59,6 +63,10 @@
 
 .link {
   @apply underline text-muted hover:text-font;
+}
+
+.hidden-link {
+  @apply hover:underline hover:text-muted text-font;
 }
 
 @utility enlarge-* {

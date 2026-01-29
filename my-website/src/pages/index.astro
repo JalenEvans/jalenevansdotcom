@@ -1,13 +1,18 @@
 ---
 import Hero from '../components/Hero.astro'
-import HomeCard from '../components/HomeCard.astro'
+import EducationHomeCard from '../components/HomeCards/EducationHomeCard.astro'
+import ExperienceHomeCard from '../components/HomeCards/ExperienceHomeCard.astro'
+import LeadershipHomeCard from '../components/HomeCards/LeadershipHomeCard.astro'
+import SkillsHomeCard from '../components/HomeCards/SkillsHomeCard.astro'
 import MainLayout from '../layouts/MainLayout.astro'
 ---
 
 <MainLayout>
   <Hero />
   <div class="flex flex-col gap-5 ml-8 mr-8 mb-4">
-    <HomeCard title="About Me" content="This is a Home Card" link="/about" />
-    <HomeCard title="My Blog" content="This is a Home Card" link="/blog" />
+    <EducationHomeCard />
+    <ExperienceHomeCard />
+    <LeadershipHomeCard />
+    <SkillsHomeCard />
   </div>
 </MainLayout>

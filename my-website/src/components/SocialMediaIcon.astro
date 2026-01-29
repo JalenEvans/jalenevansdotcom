@@ -1,14 +1,15 @@
 ---
 interface Props {
+  title: string
   link: string
   rawPath: string
   hoverColor: string
 }
 
-const { link, rawPath, hoverColor } = Astro.props
+const { title, link, rawPath, hoverColor } = Astro.props
 ---
 
-<a href={link} id="icon" class="w-8 h-8 enlarge-110"
+<a href={link} title={title} id="icon" class="w-8 h-8 enlarge-110"
   ><Fragment set:html={rawPath} /></a
 >
 
