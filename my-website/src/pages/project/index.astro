@@ -3,7 +3,8 @@ import MainLayout from '../../layouts/MainLayout.astro'
 import ProjectCard from '../../components/ProjectCard.astro'
 import PersonalWebsite from '../../assets/ProjectImages/PersonalWebsite.png'
 import Loocator from '../../assets/ProjectImages/loocator.jpg'
-import { ASTRO_DATA } from '../../components/logoData'
+import Tripoli from '../../assets/ProjectImages/tripoli.png'
+import * as LogoData from '../../components/logoData'
 ---
 
 <MainLayout>
@@ -14,14 +15,20 @@ import { ASTRO_DATA } from '../../components/logoData'
       title="Personal Website"
       description="The website you are viewing right now!"
       src={PersonalWebsite}
-      icons={[ASTRO_DATA]}
+      icons={[LogoData.ASTRO_DATA]}
     />
     <ProjectCard
       title="Loo-cator"
       description="A community-powered Public Restroom Finder."
       src={Loocator}
+      icons={[LogoData.FLUTTER_DATA, LogoData.FIREBASE_DATA]}
     />
-    <ProjectCard title="Three" description="Three desc" />
+    <ProjectCard
+      title="Tripoli"
+      description="My Undergraduate Research Project"
+      src={Tripoli}
+      icons={[LogoData.JAVA_DATA]}
+    />
     <ProjectCard title="Four" description="Four desc" />
     <ProjectCard title="Five" description="Five desc" />
     <ProjectCard title="Six" description="Six desc" />
