@@ -1,0 +1,24 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro'
+import ProjectCard from '../../components/ProjectCard.astro'
+import PersonalWebsite from '../../assets/ProjectImages/PersonalWebsite.png'
+import { ASTRO_DATA } from '../../components/logoData'
+---
+
+<MainLayout>
+  <div
+    class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 justify-center m-8"
+  >
+    <ProjectCard
+      title="Personal Website"
+      description="The website you are viewing right now!"
+      src={PersonalWebsite}
+      icons={[ASTRO_DATA]}
+    />
+    <ProjectCard title="Two" description="Two desc" />
+    <ProjectCard title="Three" description="Three desc" />
+    <ProjectCard title="Four" description="Four desc" />
+    <ProjectCard title="Five" description="Five desc" />
+    <ProjectCard title="Six" description="Six desc" />
+  </div>
+</MainLayout>
