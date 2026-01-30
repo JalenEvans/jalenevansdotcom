@@ -20,14 +20,18 @@ const project = await getEntry('project', `${entryID}`)
 <div
   class="flex flex-col justify-start h-100 w-90 p-4 gap-4 rounded-3xl bg-bg enlarge-105 hover:bg-light"
 >
-  <div class="w-full h-60 overflow-hidden border-2 rounded-2xl">
+  <div
+    class="w-full h-60 overflow-hidden border-2 rounded-2xl flex justify-center items-center"
+  >
     {
       src ? (
         <Image src={src} alt={title} class="w-full h-full object-cover" />
-      ) : null
+      ) : (
+        <p>No image found.</p>
+      )
     }
   </div>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-2">
     <div>
       <a
         href=`/project/${project?.slug}`
@@ -35,16 +39,21 @@ const project = await getEntry('project', `${entryID}`)
       >
       <p>{description}</p>
     </div>
-    {
-      icons?.map((icon) => (
-        <Icon
-          title={icon.title}
-          rawPath={icon.rawPath}
-          hoverColor={icon.hoverColor}
-          width={6}
-          height={6}
-        />
-      ))
-    }
+    <div class="flex items-center">
+      {
+        icons?.map((icon) => (
+          <Icon
+            title={icon.title}
+            rawPath={icon.rawPath}
+            hoverColor={icon.hoverColor}
+            width={6}
+            height={6}
+          />
+        ))
+      }
+    </div>
+    <div class="flex flex-row gap-2 text-muted">
+      {project?.data.tags.map((tag: string) => <span>#{tag}</span>)}
+    </div>
   </div>
 </div>

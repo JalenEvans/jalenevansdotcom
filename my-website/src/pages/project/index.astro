@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/MainLayout.astro'
 import ProjectCard from '../../components/ProjectCard.astro'
 import PersonalWebsite from '../../assets/ProjectImages/PersonalWebsite.png'
+import Loocator from '../../assets/ProjectImages/loocator.jpg'
 import { ASTRO_DATA } from '../../components/logoData'
 ---
 
@@ -15,7 +16,11 @@ import { ASTRO_DATA } from '../../components/logoData'
       src={PersonalWebsite}
       icons={[ASTRO_DATA]}
     />
-    <ProjectCard title="Two" description="Two desc" />
+    <ProjectCard
+      title="Loo-cator"
+      description="A community-powered Public Restroom Finder."
+      src={Loocator}
+    />
     <ProjectCard title="Three" description="Three desc" />
     <ProjectCard title="Four" description="Four desc" />
     <ProjectCard title="Five" description="Five desc" />
