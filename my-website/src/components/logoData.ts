@@ -3,7 +3,9 @@ import FastAPI from '../assets/Logos/fastapi.svg?raw'
 import FlutterLogo from '../assets/Logos/flutter.svg?raw'
 import FirebaseLogo from '../assets/Logos/firebase.svg?raw'
 import JavaLogo from '../assets/Logos/java.svg?raw'
+import JupyterLogo from '../assets/Logos/jupyter.svg?raw'
 import PostgreSQLLogo from '../assets/Logos/postgresql.svg?raw'
+import PytorchLogo from '../assets/Logos/pytorch.svg?raw'
 import ReactLogo from '../assets/Logos/react.svg?raw'
 
 export type LogoData = {
@@ -42,10 +44,22 @@ const JAVA_DATA: LogoData = {
   hoverColor: '#EA2D2E',
 }
 
+const JUPYTER_DATA: LogoData = {
+  title: 'Jupyter',
+  rawPath: JupyterLogo,
+  hoverColor: '#F37626',
+}
+
 const POSTGRESQL_DATA: LogoData = {
   title: 'PostgreSQL',
   rawPath: PostgreSQLLogo,
   hoverColor: '#4169E1',
+}
+
+const PYTORCH_DATA: LogoData = {
+  title: 'PyTorch',
+  rawPath: PytorchLogo,
+  hoverColor: '#EE4C2C',
 }
 
 const REACT_DATA: LogoData = {
@@ -60,6 +74,8 @@ export {
   FLUTTER_DATA,
   FIREBASE_DATA,
   JAVA_DATA,
+  JUPYTER_DATA,
   POSTGRESQL_DATA,
+  PYTORCH_DATA,
   REACT_DATA,
 }
