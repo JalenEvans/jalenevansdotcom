@@ -6,42 +6,50 @@ const allPosts = (await getCollection('blog')).sort(
   (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
     b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
+
+const allTags = allPosts.forEach((post) => console.log(post))
 ---
 
 <MainLayout title="My Blog">
-  <section class="max-w-4xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-bold mb-8">Latest Posts</h1>
-
-    <div class="space-y-8">
-      {
-        allPosts.map((post) => (
-          <article class="border-b pb-6">
-            <header>
-              <time class="text-sm text-gray-500">
-                {post.data.pubDate.toLocaleDateString()}
-              </time>
-              <h2 class="text-2xl font-semibold mt-1">
-                <a
-                  href={`/blog/${post.slug}`}
-                  class="hover:text-blue-600 transition"
-                >
-                  {post.data.title}
-                </a>
-              </h2>
-            </header>
-
-            <p class="text-gray-700 mt-2">{post.data.description}</p>
-
-            <div class="mt-4 flex gap-2">
-              {post.data.tags.map((tag: string) => (
-                <span class="bg-gray-100 px-2 py-1 text-xs rounded">
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))
-      }
-    </div>
+  <p>{allTags}</p>
+  <section class="flex justify-center">
+    <input
+      type="text"
+      id="search-bar"
+      placeholder="Search posts..."
+      class="m-4 p-2 border"
+    />
+  </section>
+  <section class="flex flex-col items-center">
+    {
+      allPosts.map((post) => (
+        <div
+          id="post-card"
+          data-title={post.data.title.toLocaleLowerCase()}
+          class="h-30"
+        >
+          <h1 class="text-xl">{post.data.title}</h1>
+        </div>
+      ))
+    }
   </section>
 </MainLayout>
+
+<script is:inline>
+  const searchBar = document.getElementById('search-bar')
+  const postCards = document.querySelectorAll('#post-card')
+
+  searchBar.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase()
+
+    postCards.forEach((card) => {
+      const title = card.getAttribute('data-title')
+
+      if (title.includes(query)) {
+        card.style.display = 'block'
+      } else {
+        card.style.display = 'none'
+      }
+    })
+  })
+</script>
