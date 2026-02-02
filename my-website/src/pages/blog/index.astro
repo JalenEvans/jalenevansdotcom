@@ -1,55 +1,32 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
 import MainLayout from '../../layouts/MainLayout.astro'
+import SearchBar from '../../components/SearchBar.astro'
+import BlogCard from '../../components/BlogCard.astro'
 
 const allPosts = (await getCollection('blog')).sort(
   (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
     b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
 
-const allTags = allPosts.forEach((post) => console.log(post))
+let allTags: string[] = []
+allPosts.forEach((post) => allTags.push(...post.data.tags))
 ---
 
 <MainLayout title="My Blog">
-  <p>{allTags}</p>
   <section class="flex justify-center">
-    <input
-      type="text"
-      id="search-bar"
-      placeholder="Search posts..."
-      class="m-4 p-2 border"
-    />
+    <SearchBar elementClass="post-card" />
   </section>
   <section class="flex flex-col items-center">
     {
       allPosts.map((post) => (
         <div
-          id="post-card"
           data-title={post.data.title.toLocaleLowerCase()}
-          class="h-30"
+          class="post-card h-30"
         >
-          <h1 class="text-xl">{post.data.title}</h1>
+          <BlogCard title={post.data.title} />
         </div>
       ))
     }
   </section>
 </MainLayout>
-
-<script is:inline>
-  const searchBar = document.getElementById('search-bar')
-  const postCards = document.querySelectorAll('#post-card')
-
-  searchBar.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase()
-
-    postCards.forEach((card) => {
-      const title = card.getAttribute('data-title')
-
-      if (title.includes(query)) {
-        card.style.display = 'block'
-      } else {
-        card.style.display = 'none'
-      }
-    })
-  })
-</script>

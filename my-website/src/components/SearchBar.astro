@@ -1,0 +1,38 @@
+---
+interface Props {
+  elementClass: string
+  tags?: boolean
+}
+
+const { elementClass, tags } = Astro.props
+---
+
+<div>
+  <input
+    type="text"
+    id="search-bar"
+    placeholder="Search posts..."
+    class="m-4 p-2 border"
+  />
+</div>
+
+<script is:inline define:vars={{ elementClass }}>
+  window.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar')
+    const elements = document.querySelectorAll(`.${elementClass}`)
+
+    searchBar.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase()
+
+      elements.forEach((elem) => {
+        const title = elem.getAttribute('data-title')
+
+        if (title.includes(query)) {
+          elem.style.display = 'block'
+        } else {
+          elem.style.display = 'none'
+        }
+      })
+    })
+  })
+</script>
