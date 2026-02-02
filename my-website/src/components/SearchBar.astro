@@ -1,4 +1,6 @@
 ---
+import NewsletterDialog from './NewsletterDialog.astro'
+
 interface Props {
   elementClass: string
   tags?: boolean
@@ -7,13 +9,14 @@ interface Props {
 const { elementClass, tags } = Astro.props
 ---
 
-<div>
+<div class="flex justify-center w-full m-8 mt-2">
   <input
     type="text"
     id="search-bar"
     placeholder="Search posts..."
-    class="m-4 p-2 border"
+    class="w-full m-4 p-2 bg-bg hover:bg-light focus:bg-light border rounded-lg"
   />
+  <NewsletterDialog />
 </div>
 
 <script is:inline define:vars={{ elementClass }}>

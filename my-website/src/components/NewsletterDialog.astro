@@ -1,0 +1,29 @@
+---
+
+---
+
+<button id="open-btn">Open</button>
+
+<dialog id="newsletter" class="m-auto fixed inset-0 backdrop:backdrop-blur-sm">
+  <p>Dialog</p>
+  <button id="close-btn">Close</button>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('newsletter') as HTMLDialogElement
+  const openBtn = document.getElementById('open-btn') as HTMLButtonElement
+  const closeBtn = document.getElementById('close-btn') as HTMLButtonElement
+
+  const handleOpen = (event: MouseEvent) => {
+    event.preventDefault()
+    dialog.showModal()
+  }
+
+  const handleClose = (event: MouseEvent) => {
+    event.preventDefault()
+    dialog.close()
+  }
+
+  openBtn.addEventListener('click', handleOpen)
+  closeBtn.addEventListener('click', handleClose)
+</script>
