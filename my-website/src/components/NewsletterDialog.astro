@@ -2,11 +2,24 @@
 
 ---
 
-<button id="open-btn">Open</button>
+<button
+  id="open-btn"
+  class="w-fit h-fit p-2.5 border rounded-md whitespace-nowrap bg-bg hover:bg-light text-sm"
+  >Join Newsletter</button
+>
 
-<dialog id="newsletter" class="m-auto fixed inset-0 backdrop:backdrop-blur-sm">
-  <p>Dialog</p>
-  <button id="close-btn">Close</button>
+<dialog
+  id="newsletter"
+  class="w-250 h-100 m-auto fixed inset-0
+  opacity-0 translate-y-20 duration-300 ease-in transition-all
+  open:opacity-100 open:translate-y-0 open:duration-500 open:ease-out
+  starting:open:opacity-0 starting:open:translate-y-20
+  backdrop:backdrop-blur-sm"
+>
+  <div class="">
+    <p>Dialog</p>
+    <button id="close-btn">Close</button>
+  </div>
 </dialog>
 
 <script>
@@ -26,4 +39,7 @@
 
   openBtn.addEventListener('click', handleOpen)
   closeBtn.addEventListener('click', handleClose)
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close()
+  })
 </script>

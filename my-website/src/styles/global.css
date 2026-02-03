@@ -56,6 +56,11 @@
     @apply list-disc ml-4;
   }
 
+  dialog,
+  dialog::backdrop {
+    transition-behavior: allow-discrete;
+  }
+
   body {
     @apply bg-linear-to-b/oklch from-bg to-darker text-font font-body;
   }
