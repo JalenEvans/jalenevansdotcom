@@ -14,19 +14,21 @@ allPosts.forEach((post) => allTags.push(...post.data.tags))
 ---
 
 <MainLayout title="My Blog">
-  <section class="flex justify-center">
-    <SearchBar elementClass="post-card" />
-  </section>
-  <section class="flex flex-col items-center">
-    {
-      allPosts.map((post) => (
-        <div
-          data-title={post.data.title.toLocaleLowerCase()}
-          class="post-card h-30"
-        >
-          <BlogCard title={post.data.title} />
-        </div>
-      ))
-    }
-  </section>
+  <div class="lg:ml-50 lg:mr-50">
+    <section class="flex justify-center">
+      <SearchBar elementClass="post-card" />
+    </section>
+    <section class="flex flex-col gap-5 ml-16 mr-16 mb-4">
+      {
+        allPosts.map((post) => (
+          <div
+            data-title={post.data.title.toLocaleLowerCase()}
+            class="post-card"
+          >
+            <BlogCard id={post.data.id} />
+          </div>
+        ))
+      }
+    </section>
+  </div>
 </MainLayout>
