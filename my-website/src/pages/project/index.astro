@@ -1,0 +1,47 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro'
+import ProjectCard from '../../components/ProjectCard.astro'
+import PersonalWebsite from '../../assets/ProjectImages/PersonalWebsite.png'
+import Loocator from '../../assets/ProjectImages/loocator.jpg'
+import Tripoli from '../../assets/ProjectImages/tripoli.png'
+import * as LogoData from '../../components/logoData'
+---
+
+<MainLayout>
+  <div
+    class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 justify-center m-8"
+  >
+    <ProjectCard
+      title="Personal Website"
+      description="The website you are viewing right now!"
+      src={PersonalWebsite}
+      icons={[LogoData.ASTRO_DATA]}
+    />
+    <ProjectCard
+      title="Loo-cator"
+      description="A community-powered Public Restroom Finder."
+      src={Loocator}
+      icons={[LogoData.FLUTTER_DATA, LogoData.FIREBASE_DATA]}
+    />
+    <ProjectCard
+      title="Tripoli"
+      description="My Undergraduate Research Project"
+      src={Tripoli}
+      icons={[LogoData.JAVA_DATA]}
+    />
+    <ProjectCard
+      title="Heat Check"
+      description="Fantasy Basketball Chart Analysis"
+      icons={[
+        LogoData.REACT_DATA,
+        LogoData.FASTAPI_DATA,
+        LogoData.POSTGRESQL_DATA,
+      ]}
+    />
+    <ProjectCard
+      title="MNIST GAN"
+      description="A Generative Adversarial Network trained on the MNIST Dataset."
+      icons={[LogoData.PYTORCH_DATA, LogoData.JUPYTER_DATA]}
+    />
+  </div>
+</MainLayout>
