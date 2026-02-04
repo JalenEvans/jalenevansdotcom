@@ -1,20 +1,40 @@
 ---
 import { Image } from 'astro:assets'
 import Icon from './Icon.astro'
-import type { LogoData } from './logoData'
-import { getEntry } from 'astro:content'
+import { findIcon } from '../utils/toolIconFunctions'
+import { formatTitle } from '../utils/formatting'
+import { getCollection, type CollectionEntry } from 'astro:content'
 
 interface Props {
-  title: string
-  description: string
-  src?: ImageMetadata
-  icons?: LogoData[]
+  id: string
 }
 
-const { title, description, src, icons } = Astro.props
+const { id } = Astro.props
 
-const entryID = title.toLocaleLowerCase().replaceAll(' ', '-')
-const project = await getEntry('project', `${entryID}`)
+const allProjects = await getCollection('project')
+const project = allProjects.find(
+  (project: CollectionEntry<'project'>) => project.data.id === id,
+)
+if (!project) {
+  throw new Error(`Could not find project entry with id: ${id}`)
+}
+
+const formattedTitle =
+  project.data.title == 'loo-cator'
+    ? 'Loo-Cator'
+    : formatTitle(project.data.title)
+
+let images
+
+if (project.data.mainImage) {
+  images = import.meta.glob<{ default: ImageMetadata }>(
+    '/src/assets/ProjectImages/*.{jpeg,jpg,png,gif}',
+  )
+  if (!images[project.data.mainImage])
+    throw new Error(
+      `"${project.data.mainImage}" does not exist in ProjectImages`,
+    )
+}
 ---
 
 <div
@@ -24,36 +44,50 @@ const project = await getEntry('project', `${entryID}`)
     class="w-full h-60 overflow-hidden border-2 rounded-2xl flex justify-center items-center"
   >
     {
-      src ? (
-        <Image src={src} alt={title} class="w-full h-full object-cover" />
+      project.data.mainImage && images ? (
+        <Image
+          src={images[project.data.mainImage]()}
+          alt={project.data.title}
+          class="w-full h-full object-cover"
+        />
       ) : (
-        <p>No image found.</p>
+        <p>No Image Found.</p>
       )
     }
   </div>
-  <div class="flex flex-col gap-2">
-    <div>
-      <a
-        href=`/project/${project?.slug}`
-        class="text-xl hidden-link font-heading">{title}</a
-      >
-      <p>{description}</p>
-    </div>
-    <div class="flex items-center gap-1">
-      {
-        icons?.map((icon) => (
-          <Icon
-            title={icon.title}
-            rawPath={icon.rawPath}
-            hoverColor={icon.hoverColor}
-            width={6}
-            height={6}
-          />
-        ))
-      }
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <div>
+        <a
+          href=`/project/${project?.slug}`
+          class="text-xl hidden-link font-heading">{formattedTitle}</a
+        >
+        <p>{project.data.description}</p>
+      </div>
+      <div class="flex items-center gap-1">
+        {
+          project.data.tools?.map((tool) => {
+            const icon = findIcon(tool)
+
+            return (
+              <Icon
+                title={icon.title}
+                rawPath={icon.rawPath}
+                hoverColor={icon.hoverColor}
+                width={6}
+                height={6}
+              />
+            )
+          })
+        }
+      </div>
     </div>
     <div class="flex flex-row gap-2 text-muted">
-      {project?.data.tags.map((tag: string) => <span>#{tag}</span>)}
+      {
+        project?.data.tags.map((tag: string) => (
+          <span class="p-2 rounded-sm text-xs bg-dark text-muted">#{tag}</span>
+        ))
+      }
     </div>
   </div>
 </div>
