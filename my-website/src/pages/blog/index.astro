@@ -23,6 +23,7 @@ allPosts.forEach((post) => allTags.push(...post.data.tags))
         allPosts.map((post) => (
           <div
             data-title={post.data.title.toLocaleLowerCase()}
+            data-tags={post.data.tags}
             class="post-card"
           >
             <BlogCard id={post.data.id} />

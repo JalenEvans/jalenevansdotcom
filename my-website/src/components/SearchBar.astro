@@ -9,33 +9,57 @@ interface Props {
 const { elementClass, tags } = Astro.props
 ---
 
-<div class="w-full flex justify-center items-center m-8 mt-2">
-  <input
-    type="text"
-    id="search-bar"
-    placeholder="Search posts..."
-    class="w-full m-4 p-2 bg-bg hover:bg-light focus:bg-light border rounded-lg"
-  />
+<div class="w-full flex justify-center items-start m-8 mt-6">
+  <div class="flex flex-col w-full m-4 mt-0">
+    <input
+      type="text"
+      id="search-bar"
+      placeholder="Search posts..."
+      class="w-full p-2 bg-bg text-font placeholder-muted hover:bg-light focus:bg-light
+      border border-font focus:border-font focus:outline-none focus:ring-0 rounded-lg"
+    />
+    <div
+      class="flex flex-row items-center gap-1 w-fit mt-0.5 p-2 pt-0 text-font"
+    >
+      <input
+        type="checkbox"
+        id="tagsCheckbox"
+        name="tags"
+        class="text-red-600 focus:outline-none focus:ring-0"
+      />
+      <label for="tags" class="text-md">tags</label>
+    </div>
+  </div>
   <NewsletterDialog />
 </div>
 
 <script is:inline define:vars={{ elementClass }}>
   window.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('search-bar')
+    const tagsCheckbox = document.getElementById('tagsCheckbox')
     const elements = document.querySelectorAll(`.${elementClass}`)
 
-    searchBar.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase()
+    const handleSearch = () => {
+      const query = searchBar.value.toLowerCase()
+      const searchTags = tagsCheckbox.checked
+
+      searchBar.placeholder = searchTags ? 'Search tags...' : 'Search posts...'
 
       elements.forEach((elem) => {
-        const title = elem.getAttribute('data-title')
+        const attribute = searchTags
+          ? elem.getAttribute('data-tags')
+          : elem.getAttribute('data-title')
 
-        if (title.includes(query)) {
+        if (attribute.includes(query)) {
           elem.style.display = 'block'
         } else {
           elem.style.display = 'none'
         }
       })
-    })
+    }
+
+    searchBar.addEventListener('input', handleSearch)
+
+    tagsCheckbox.addEventListener('change', handleSearch)
   })
 </script>

@@ -16,7 +16,6 @@ const blog = defineCollection({
 const project = defineCollection({
   type: 'content',
   schema: z.object({
-    id: z.string(),
     title: z.string(),
     startDate: z.coerce.date(), // ISO String: YYYY-MM-DDThh:mm:ss
     contributors: z.array(z.string()).default(['Jalen Evans']),
