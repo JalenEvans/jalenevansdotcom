@@ -1,0 +1,45 @@
+---
+
+---
+
+<button
+  id="open-btn"
+  class="w-fit h-fit p-2.5 border rounded-md whitespace-nowrap bg-bg hover:bg-light text-sm"
+  >Join Newsletter</button
+>
+
+<dialog
+  id="newsletter"
+  class="hidden flex-col justify-center items-center w-250 h-100 m-auto fixed inset-0 bg-light text-font rounded-3xl
+  opacity-0 translate-y-20 duration-300 ease-in transition-all
+  open:opacity-100 open:translate-y-0 open:duration-500 open:ease-out open:flex
+  starting:open:opacity-0 starting:open:translate-y-20 starting:hidden
+  backdrop:backdrop-blur-sm"
+>
+  <div class="">
+    <p>Dialog</p>
+    <button id="close-btn">Close</button>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('newsletter') as HTMLDialogElement
+  const openBtn = document.getElementById('open-btn') as HTMLButtonElement
+  const closeBtn = document.getElementById('close-btn') as HTMLButtonElement
+
+  const handleOpen = (event: MouseEvent) => {
+    event.preventDefault()
+    dialog.showModal()
+  }
+
+  const handleClose = (event: MouseEvent) => {
+    event.preventDefault()
+    dialog.close()
+  }
+
+  openBtn.addEventListener('click', handleOpen)
+  closeBtn.addEventListener('click', handleClose)
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close()
+  })
+</script>
