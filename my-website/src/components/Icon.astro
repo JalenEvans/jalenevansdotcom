@@ -14,14 +14,28 @@ const customWidth = `calc(var(--spacing) * ${width})`
 const customHeight = `calc(var(--spacing) * ${height})`
 ---
 
-<a
-  href={link}
-  title={title}
-  id="icon"
-  class="w-(--custom-width) h-(--custom-height) enlarge-110"
-  style={`--custom-width: ${customWidth}; --custom-height: ${customHeight};`}
-  ><Fragment set:html={rawPath} /></a
->
+{
+  link ? (
+    <a
+      href={link}
+      title={title}
+      id="icon"
+      class="w-(--custom-width) h-(--custom-height) enlarge-110"
+      style={`--custom-width: ${customWidth}; --custom-height: ${customHeight};`}
+    >
+      <Fragment set:html={rawPath} />
+    </a>
+  ) : (
+    <div
+      title={title}
+      id="icon"
+      class="w-(--custom-width) h-(--custom-height) enlarge-110"
+      style={`--custom-width: ${customWidth}; --custom-height: ${customHeight};`}
+    >
+      <Fragment set:html={rawPath} />
+    </div>
+  )
+}
 
 <style define:vars={{ hoverColor: `${hoverColor}` }}>
   #icon {

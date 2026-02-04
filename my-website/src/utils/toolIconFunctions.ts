@@ -26,16 +26,16 @@ const FASTAPI_DATA: LogoData = {
   hoverColor: '#009688',
 }
 
-const FLUTTER_DATA: LogoData = {
-  title: 'Flutter',
-  rawPath: FlutterLogo,
-  hoverColor: '#02569B',
-}
-
 const FIREBASE_DATA: LogoData = {
   title: 'Firebase',
   rawPath: FirebaseLogo,
   hoverColor: '#DD2C00',
+}
+
+const FLUTTER_DATA: LogoData = {
+  title: 'Flutter',
+  rawPath: FlutterLogo,
+  hoverColor: '#02569B',
 }
 
 const JAVA_DATA: LogoData = {
@@ -68,14 +68,27 @@ const REACT_DATA: LogoData = {
   hoverColor: '#61DAFB',
 }
 
-export {
-  ASTRO_DATA,
-  FASTAPI_DATA,
-  FLUTTER_DATA,
-  FIREBASE_DATA,
-  JAVA_DATA,
-  JUPYTER_DATA,
-  POSTGRESQL_DATA,
-  PYTORCH_DATA,
-  REACT_DATA,
+export const findIcon = (tool: string) => {
+  switch (tool) {
+    case 'astro':
+      return ASTRO_DATA
+    case 'fastapi':
+      return FASTAPI_DATA
+    case 'firebase':
+      return FIREBASE_DATA
+    case 'flutter':
+      return FLUTTER_DATA
+    case 'java':
+      return JAVA_DATA
+    case 'jupyter':
+      return JUPYTER_DATA
+    case 'postgresql':
+      return POSTGRESQL_DATA
+    case 'pytorch':
+      return PYTORCH_DATA
+    case 'react':
+      return REACT_DATA
+    default:
+      throw new Error(`Icon for ${tool} not found.`)
+  }
 }
