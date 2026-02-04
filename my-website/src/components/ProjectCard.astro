@@ -37,57 +37,58 @@ if (project.data.mainImage) {
 }
 ---
 
-<div
-  class="flex flex-col justify-start h-100 w-90 p-4 gap-4 rounded-3xl bg-bg enlarge-105 hover:bg-light"
->
+<a href=`/project/${project?.slug}`>
   <div
-    class="w-full h-60 overflow-hidden border-2 rounded-2xl flex justify-center items-center"
+    class="flex flex-col justify-start h-100 w-90 p-4 gap-4 rounded-3xl bg-bg enlarge-105 hover:bg-light"
   >
-    {
-      project.data.mainImage && images ? (
-        <Image
-          src={images[project.data.mainImage]()}
-          alt={project.data.title}
-          class="w-full h-full object-cover"
-        />
-      ) : (
-        <p>No Image Found.</p>
-      )
-    }
-  </div>
-  <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-2">
-      <div>
-        <a
-          href=`/project/${project?.slug}`
-          class="text-xl hidden-link font-heading">{formattedTitle}</a
-        >
-        <p>{project.data.description}</p>
-      </div>
-      <div class="flex items-center gap-1">
-        {
-          project.data.tools?.map((tool) => {
-            const icon = findIcon(tool)
+    <div
+      class="w-full h-60 overflow-hidden border-2 rounded-2xl flex justify-center items-center"
+    >
+      {
+        project.data.mainImage && images ? (
+          <Image
+            src={images[project.data.mainImage]()}
+            alt={project.data.title}
+            class="w-full h-full object-cover"
+          />
+        ) : (
+          <p>No Image Found.</p>
+        )
+      }
+    </div>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <div>
+          <h1 class="text-xl font-heading">{formattedTitle}</h1>
+          <p>{project.data.description}</p>
+        </div>
+        <div class="flex items-center gap-1">
+          {
+            project.data.tools?.map((tool) => {
+              const icon = findIcon(tool)
 
-            return (
-              <Icon
-                title={icon.title}
-                rawPath={icon.rawPath}
-                hoverColor={icon.hoverColor}
-                width={6}
-                height={6}
-              />
-            )
-          })
+              return (
+                <Icon
+                  title={icon.title}
+                  rawPath={icon.rawPath}
+                  hoverColor={icon.hoverColor}
+                  width={6}
+                  height={6}
+                />
+              )
+            })
+          }
+        </div>
+      </div>
+      <div class="flex flex-row gap-2 text-muted">
+        {
+          project?.data.tags.map((tag: string) => (
+            <span class="p-2 rounded-sm text-xs bg-dark text-muted">
+              #{tag}
+            </span>
+          ))
         }
       </div>
     </div>
-    <div class="flex flex-row gap-2 text-muted">
-      {
-        project?.data.tags.map((tag: string) => (
-          <span class="p-2 rounded-sm text-xs bg-dark text-muted">#{tag}</span>
-        ))
-      }
-    </div>
   </div>
-</div>
+</a>
