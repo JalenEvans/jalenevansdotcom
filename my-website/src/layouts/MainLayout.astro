@@ -27,6 +27,40 @@ const { title = 'Jalen Evans' } = Astro.props
         }
       })()
     </script>
+    <script>
+      // Define the types for MailerLite
+      interface MailerLiteWindow extends Window {
+        ml: {
+          (command: string, ...args: any[]): void
+          q?: any[]
+        }
+      }
+
+      // Cast window to our custom type
+      const w = window as unknown as MailerLiteWindow
+
+      ;(function (w: any, d: Document, e: string, u: string, f: 'ml') {
+        w[f] =
+          w[f] ||
+          function () {
+            ;(w[f].q = w[f].q || []).push(arguments)
+          }
+        const l = d.createElement(e) as HTMLScriptElement
+        l.async = true
+        l.src = u
+        const n = d.getElementsByTagName(e)[0]
+        n.parentNode?.insertBefore(l, n)
+      })(
+        window,
+        document,
+        'script',
+        'https://assets.mailerlite.com/js/universal.js',
+        'ml',
+      )
+
+      // Now you can call it without errors
+      w.ml('account', '2089296')
+    </script>
   </head>
   <body class="flex flex-col min-h-screen">
     <NavBar />
