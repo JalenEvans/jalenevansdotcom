@@ -1,0 +1,64 @@
+---
+import NewsletterDialog from './NewsletterDialog.astro'
+import TagsIcon from '../assets/tags.svg'
+
+interface Props {
+  elementClass: string
+  tags?: boolean
+}
+
+const { elementClass, tags } = Astro.props
+---
+
+<div class="w-full flex justify-center items-start m-8 mt-6">
+  <div class="flex flex-row w-full m-4 mt-0">
+    <input
+      type="text"
+      id="search-bar"
+      placeholder="Search posts..."
+      class="w-full p-2 bg-bg text-font placeholder-muted hover:bg-light focus:bg-light
+      border border-font focus:border-font focus:outline-none focus:ring-0 rounded-lg"
+    />
+    <div
+      class="absolute right-46 sm:right-48 md:right-48 lg:right-98 translate-y-1 flex flex-row items-center gap-1 w-fit m-1 text-font"
+    >
+      <button type="button" class="text-muted enlarge-105" id="tagsButton"
+        ><TagsIcon width={25} height={25} />
+      </button>
+    </div>
+  </div>
+  <NewsletterDialog />
+</div>
+
+<script is:inline define:vars={{ elementClass }}>
+  window.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar')
+    const tagsButton = document.getElementById('tagsButton')
+    const elements = document.querySelectorAll(`.${elementClass}`)
+
+    const handleSearch = () => {
+      const query = searchBar.value.toLowerCase()
+      const tagsChecked = tagsButton.classList.contains('text-muted')
+
+      searchBar.placeholder = tagsChecked ? 'Search tags...' : 'Search posts...'
+
+      elements.forEach((elem) => {
+        const attribute = tagsChecked
+          ? elem.getAttribute('data-title')
+          : elem.getAttribute('data-tags')
+
+        if (attribute.includes(query)) {
+          elem.style.display = 'block'
+        } else {
+          elem.style.display = 'none'
+        }
+      })
+    }
+
+    searchBar.addEventListener('input', handleSearch)
+    tagsButton.addEventListener('click', handleSearch)
+    tagsButton.addEventListener('click', () => {
+      tagsButton.classList.toggle('text-muted')
+    })
+  })
+</script>

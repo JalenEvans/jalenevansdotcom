@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
 
 @import '@fontsource/amiri/700.css';
 @import '@fontsource/amiri/700-italic.css';
@@ -54,6 +55,11 @@
 
   ul {
     @apply list-disc ml-4;
+  }
+
+  dialog,
+  dialog::backdrop {
+    transition-behavior: allow-discrete;
   }
 
   body {

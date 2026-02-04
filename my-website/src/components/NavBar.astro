@@ -20,17 +20,19 @@ const getCurrPath = () => {
 ---
 
 <nav
-  class="sticky top-0 w-full z-10 flex justify-between items-center p-6 pl-8 pr-8 bg-light text-font shadow-xl"
+  class="sticky top-0 w-full z-10 flex items-center p-6 pl-8 pr-8 bg-light text-font shadow-xl"
 >
   <a
     href="/"
-    class="flex justify-center items-center gap-4 text-3xl enlarge-110"
+    class="flex flex-1 justify-start items-center gap-4 text-3xl enlarge-110"
   >
     <Logo width={40} height={40} />
     <h1>Jalen Evans</h1>
   </a>
-  <span>{getCurrPath}</span>
-  <div class="flex font-heading space-x-5 text-md items-center text-font">
+  <span class="flex">{getCurrPath}</span>
+  <div
+    class="flex flex-1 justify-end items-center font-heading space-x-5 text-md text-font"
+  >
     <a class="inline-block hover:underline enlarge-110" href="/">Home</a>
     <a class="inline-block hover:underline enlarge-110" href="/about">About</a>
     <a class="inline-block hover:underline enlarge-110" href="/blog">Blog</a>
