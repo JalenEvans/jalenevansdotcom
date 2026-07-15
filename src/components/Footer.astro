@@ -4,6 +4,7 @@ import LinkedInLogo from '../assets/Logos/LinkedInLogo.svg?raw'
 import GithubLogo from '../assets/Logos/GithubLogo.svg?raw'
 import GmailLogo from '../assets/Logos/GmailLogo.svg?raw'
 import ThemeToggle from './ThemeToggle.astro'
+import { LINKS } from '../constants/links'
 ---
 
 <div
@@ -14,7 +15,7 @@ import ThemeToggle from './ThemeToggle.astro'
     <div class="flex flex-row gap-3">
       <SocialMediaIcon
         title="LinkedIn"
-        link="https://www.linkedin.com/in/je319"
+        link={LINKS.linkedin}
         rawPath={LinkedInLogo}
         hoverColor="#0A66C2"
         width={8}
@@ -22,7 +23,7 @@ import ThemeToggle from './ThemeToggle.astro'
       />
       <SocialMediaIcon
         title="Github"
-        link="https://www.github.com/JalenEvans"
+        link={LINKS.github}
         rawPath={GithubLogo}
         hoverColor="#646262"
         width={8}
@@ -30,7 +31,7 @@ import ThemeToggle from './ThemeToggle.astro'
       />
       <SocialMediaIcon
         title="Gmail"
-        link="mailto:jalenemmanuelevans@gmail.com"
+        link={LINKS.gmail}
         rawPath={GmailLogo}
         hoverColor="#EA4335"
         width={8}

@@ -36,6 +36,7 @@ Thumbs.db
 
 # Obsidian
 .obsidian/
+.jalenevansdotcom/
 
 # Optional: Playwright/Cypress (if you add E2E testing later)
 test-results/
