@@ -34,9 +34,11 @@ Thumbs.db
 # Astro specific
 .astro/
 
-# Obsidian
+# Obsidian vault config (personal, not project)
 .obsidian/
-.jalenevansdotcom/
+
+# Domain documentation (tracked)
+# .jalenevansdotcom/
 
 # Optional: Playwright/Cypress (if you add E2E testing later)
 test-results/
